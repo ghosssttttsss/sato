@@ -1,0 +1,230 @@
+
+			.main img{
+				width: 100%;
+				margin-top: 30px;
+			}
+
+
+			.flex__item{
+				flex: 42;
+			}
+			.flex__item2{
+				flex: 3;
+			}
+			.formulario{
+				flex: 55;
+			}
+			.main{
+					font-size: 20px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 25px;
+	color: #222;
+			}
+			.dos{
+					font-family: "Source Sans Pro", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	color: #666666;
+			}
+
+			label{
+					font-family: "Source Sans Pro", sans-serif;
+	font-size: 16px;
+	color: #222;
+	margin-bottom: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		display: block;
+		margin-top: 10px;
+			}
+			input{
+				font-family: "Source Sans Pro", sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	border: 1px solid #d1d5db;
+	background: #fff;
+	border-radius: 4px;
+	width: 100%;
+
+
+			}
+			textarea{
+				font-size: 16px;
+				width: 100%;
+				border: 1px solid #d1d5db;
+			}
+			input::placeholder, textarea::placeholder{
+				color: #d1d5db;
+			}
+			#enviarBoton{
+				margin-top: 30px;
+	color: #fff;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 16px;
+	background-color: #e32410;
+	font-weight: 500;
+	padding: 16px 40px;
+
+	border-radius: 4px;
+		border: 0;
+			cursor: pointer;
+			}
+			sup{
+				color: red;
+			}
+
+
+					.info span{
+font-size: 16px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+					}
+					.info h3 span{
+						color: #222;
+					}
+					.info span.maz{
+						color: #5d6b82;
+					}
+					.info a, .sucursales a[href^="tel:"]{
+						background-color: #919da9;
+						color: #fff;
+						line-height: 1;
+	padding: 12px 20px;
+	text-decoration: none;
+	outline: 0;
+	
+	display: inline-block;
+
+		text-align: center;
+}
+
+
+	.answer {
+				/*display: none;*/
+				padding: 0 20px;
+			}
+	.answer span{
+		line-height: inherit;
+	display: block;
+	margin-right: 0!important;
+
+	font-size: 16px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 400;
+	color: #666;
+
+
+	}
+	.info button{
+			font-size: 16px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #222;
+	line-height: 1.5em;
+	border-style: solid;
+	border-color: #ebebeb;
+	border-width: 0 0 1px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	width: 100%;
+	height: auto;
+	text-align: left;
+	outline: 0;
+	display: block;
+
+	position: relative;
+
+	font-style: normal;
+
+	cursor: pointer;
+
+	margin: 0;
+	}
+
+
+
+				.sucursales{
+						padding-top: 55px;
+	padding-bottom: 55px;
+	background-color: #f8f8f8;
+
+	padding: 20px 0;
+				}
+				.t_sucursales{
+					text-align: center;
+				}
+				.t_sucursales span {
+					font-size: 24px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #222;
+				}
+				.dir{
+	font-size: 16px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 400;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #666;
+	line-height: 1.5em;
+				}
+				.sucursal{
+					font-size: 16px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 7px;
+	color: #222;
+				}
+
+				.sucursales img{
+					max-width: 250px;
+					width: 100%;
+				}
+				.ubicaciones.flex{
+					/*align-content: space-around;*/
+				}
+				.ubicaciones.flex > div{
+					flex: 1;
+					margin: 10px;
+				}
+
+		.reposo, .answer{
+				visibility: hidden;
+				max-height: 0;
+				transition: visibility 1s, max-height 1s;
+				overflow: hidden;
+			}
+			.abierto{
+			  visibility: visible;
+			  transition: visibility 1s, max-height 1s;
+			}
+			.abierto{
+			  max-height: 150px;
+			}
+			.flex.abierto{
+			  max-height: 1100px;
+			}
+			@media screen and (max-width: 600px) {
+				.flex.abierto{
+						  max-height: 1600px;
+						}
+			}
+			.preguntas{
+				overflow: hidden;
+			}
+			#whatsapp{
+				width: auto;
+			}

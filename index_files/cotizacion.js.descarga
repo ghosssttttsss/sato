@@ -1,0 +1,81 @@
+	function toggleAnswer(answerId) {
+		var answer = document.getElementById(answerId);
+		if(answer.classList.contains("abierto")){
+ 			answer.classList.remove("abierto")
+		}else{
+ 			answer.classList.add("abierto");
+		}
+	}
+	// document.getElementById('enviarBoton').addEventListener('click', enviado);
+	document.getElementById('enviarBoton').addEventListener('click', validacion);
+	function enviado(e) {
+			e.preventDefault();
+	        let contacto = document.getElementById("contacto");
+	        let msg = document.querySelector("#js_msg_ok").value;
+	        contacto.outerHTML = '<div id="contacto2" class="main ancho" style="text-align: center;background-color: #001c5f;color: #ffffff;">' + msg +'</div>';
+	        contacto = document.getElementById("contacto2");
+			contacto.scrollIntoView();
+	        window.scrollBy(0, -100);
+    }
+	function validacion(e) {
+	 	e.preventDefault();
+		if(document.getElementById("contact_form").reportValidity()){
+			this.disabled = true;
+			let formulario = document.getElementById('contact_form');
+			let aux_url = document.createElement("input");
+			aux_url.type = "hidden";
+			aux_url.name = "url";
+			aux_url.value = window.location.href;
+			formulario.appendChild(aux_url);
+			aux_url = document.createElement("input");
+			aux_url.type = "hidden";
+			aux_url.name = "width";
+			aux_url.value = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			formulario.appendChild(aux_url);
+			aux_url = document.createElement("input");
+			aux_url.type = "hidden";
+			aux_url.name = "height";
+			aux_url.value = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;;
+			formulario.appendChild(aux_url);
+
+
+			grecaptcha.ready(function() {
+			  grecaptcha.execute('6LdkYAkpAAAAAID-J0_MP_47HCnajWMfP_LGIg0-', {action: 'submit'}).then(function(token) {
+				let aux = document.createElement("input");
+				aux.id = "respuesta";
+				aux.type = "hidden";
+				aux.name = "g-recaptcha-response";
+				aux.value = token;
+				formulario.appendChild(aux);
+
+				let formData = new FormData(formulario);
+				enviarFormulario(formData);
+			  });
+			});
+		}
+    }
+
+    function enviarFormulario(formData) {
+    	fetch('/contact', {
+	        method: 'POST',
+	        body: formData
+	      })
+	      .then(response => response.text())
+	      .then(data => {
+	        let contacto = document.getElementById("contacto");
+	        if(data == "ok"){
+	        	let msg = document.querySelector("#js_msg_ok").value;
+	        	contacto.outerHTML = '<div id="contacto2" class="main ancho" style="text-align: center;background-color: #001c5f;color: #ffffff;">' + msg +'</div>';
+	        }else{
+	        	let msg = document.querySelector("#js_msg_err").value;
+	        	contacto.outerHTML = '<div id="contacto2" class="main ancho" style="text-align: center;background-color: #001c5f;color: #ffffff;">' + msg +'</div>';
+	        }
+	        contacto = document.getElementById("contacto2");
+			contacto.scrollIntoView();
+	        window.scrollBy(0, -100);
+	      })
+	      .catch(error => {
+	        console.error('Error:', error);
+	      });
+    }
+ 

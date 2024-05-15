@@ -1,0 +1,91 @@
+
+document.querySelector("#menu_lateral").addEventListener('click', desplegar);
+document.querySelector(".cerrar_menu").addEventListener('click', desplegar);
+document.querySelector("#menu_lateral div").addEventListener('click', parar);
+document.querySelector(".btn_menu").addEventListener('click', desplegar);
+
+function desplegar(e){
+    var contenedor = document.querySelector(".btn_menu");
+    if(document.getElementById("menu_lateral").className == '')
+        document.getElementById("menu_lateral").className = 'm_none';
+    else
+        document.getElementById("menu_lateral").className = '';
+}
+function parar(e){
+    e.stopPropagation();
+}
+
+
+// Función para establecer o actualizar una cookie
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+// Función para obtener el valor de una cookie por su nombre
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+document.getElementById('es').addEventListener('click',function(e){
+  e.preventDefault();
+  cambiarValorCookie('es');
+});
+document.getElementById('en').addEventListener('click',function(e){
+  e.preventDefault();
+  cambiarValorCookie('en');
+});
+
+document.getElementById('ver_tel').addEventListener('click',function(e){
+  e.preventDefault();
+  document.getElementById('ver_tel').style.display = "none";
+  document.getElementById('v_tel').style.display = "block";
+});
+document.getElementById('ver_email').addEventListener('click',function(e){
+  e.preventDefault();
+  document.getElementById('ver_email').style.display = "none";
+  document.getElementById('v_email').style.display = "block";
+});
+function cambiarValorCookie(idioma) {
+    var nombreCookie = "idioma";
+    var nuevoValor = idioma;
+    
+    // Obtener el valor actual de la cookie
+    var valorActual = getCookie(nombreCookie);
+
+    if (valorActual !== null) {
+        setCookie(nombreCookie, nuevoValor, 30); // Cambiar a 30 días o el tiempo que desees
+        console.log("Cookie cambiada con éxito");
+    } else {
+        console.log("La cookie no existe");
+    }
+    window.location.href = "/";
+}
+
+
+activo = document.querySelector(".menu ul li a[href='" + document.location.pathname +"']");
+if(activo !== null)
+	activo.parentNode.classList.add("active");
+// document.querySelector("#menu_lateral").addEventListener('click', desplegar);
+// document.querySelector(".btn_menu").addEventListener('click', desplegar);
+// function desplegar(e){
+//     var contenedor = document.querySelector(".btn_menu");
+//     if (contenedor.contains(e.target) || e.target.className == "cerrar_menu" || e.target.id == "menu_lateral" ) {
+//         if(document.getElementById("menu_lateral").className == '')
+//             document.getElementById("menu_lateral").className = 'm_none';
+//         else
+//             document.getElementById("menu_lateral").className = '';
+//     }
+// }

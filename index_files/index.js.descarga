@@ -1,0 +1,60 @@
+
+			var currentIndex = 0;
+			var intervalId;
+			var totalItems = document.querySelectorAll('.carousel-item').length;
+			var carouselInner = document.getElementById('carousel-inner');
+			startInterval();
+
+			 // Función que se activará cuando cambie el tamaño de la ventana
+			function handleResize() {
+				showSlide(currentIndex);
+			}
+			// Agregar el evento resize al objeto window
+			window.addEventListener('resize', handleResize);
+
+			function showSlide(index) {
+				clearInterval(intervalId);
+				tamanio = document.querySelector(".carousel-item img").width;
+				if (index < 0) {
+					currentIndex = totalItems - 1;
+				} else if (index >= totalItems) {
+					currentIndex = 0;
+				} else {
+					currentIndex = index;
+				}
+
+				let translateValue = -currentIndex * (tamanio+13);
+				// Ancho del elemento más el margen
+				carouselInner.style.transform = 'translateX(' + translateValue + 'px)';
+				let hijos = document.getElementsByClassName("selectores")[0].children;
+				for (let i = 0; i < hijos.length; i++) {
+					hijos[i].classList.remove('active');
+				}
+				document.getElementsByClassName("selectores")[0].children[currentIndex].classList.add('active');
+				startInterval();
+			}
+
+			function prevSlide() {
+				showSlide(currentIndex - 1);
+			}
+
+			function nextSlide() {
+				showSlide(currentIndex + 1);
+			}
+			function startInterval() {
+				// Cambiar automáticamente cada x segundos (x000 milisegundos)
+				intervalId = setInterval(function() {
+				  nextSlide();
+				}, 5000);
+			}
+			// izqId = setInterval(function() {
+			// 	izq = document.querySelector(".izq");
+			// 	der = document.querySelector(".der");
+			// 	if(izq.innerText.length > 4){
+			// 		izq.innerText = "";
+			// 		der.innerText = "";
+			// 	}else{
+			// 		izq.innerText = izq.innerText + ">";
+			// 		der.innerText = der.innerText + "<";
+			// 	}
+			// }, 500);
